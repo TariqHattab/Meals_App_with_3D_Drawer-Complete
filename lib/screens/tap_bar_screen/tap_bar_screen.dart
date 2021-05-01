@@ -29,6 +29,7 @@ class _TapBarScreenState extends State<TapBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey('1'),
       appBar: AppBar(
         title: Text('Choose 2 category'),
         leading: IconButton(

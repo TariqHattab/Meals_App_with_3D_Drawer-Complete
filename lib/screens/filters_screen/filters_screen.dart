@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters_screen';
+  final Function setIndex;
+
+  const FiltersScreen({Key key, this.setIndex}) : super(key: key);
 
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
@@ -21,6 +24,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey('2'),
       appBar: AppBar(
         title: Text('Filters'),
         actions: [
@@ -29,7 +33,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
               onPressed: () {
                 Provider.of<AvailableList>(context, listen: false)
                     .setFilters(filters);
-                Navigator.of(context).pushReplacementNamed('/');
+                widget.setIndex(0, true);
+                // Navigator.of(context).pushReplacementNamed('/');
               })
         ],
       ),

@@ -15,12 +15,13 @@ class _CustomDrawerState extends State<CustomDrawer>
   double maxSlide;
   double minDragStartEdge;
   double maxDragStartEdge;
+  int index = 0;
 
   AnimationController _animationController;
 
   bool _canBeDragged = false;
 
-  var myDrawer = MainDrawer();
+  var myDrawer;
   var myChild;
 
   @override
@@ -34,7 +35,15 @@ class _CustomDrawerState extends State<CustomDrawer>
     // minDragStartEdge = (width * .167).roundToDouble();
     // maxDragStartEdge = maxSlide - (width * .045).roundToDouble();
     print('init $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
-
+    myDrawer = MainDrawer(setIndex: setIndex);
+    myChild = [
+      TapBarScreen(
+        toggle: toggle,
+      ),
+      FiltersScreen(
+        setIndex: setIndex,
+      )
+    ];
     _animationController = AnimationController(
       vsync: this,
       duration: _CustomDrawerState.toggleDuration,
@@ -42,8 +51,14 @@ class _CustomDrawerState extends State<CustomDrawer>
   }
 
   void toggle() {
-    print('toggle');
     _animationController.isCompleted ? close() : open();
+  }
+
+  void setIndex([int i = 0, bool isOpen = false]) {
+    setState(() {
+      index = i;
+    });
+    isOpen ? open() : close();
   }
 
   @override
@@ -102,9 +117,8 @@ class _CustomDrawerState extends State<CustomDrawer>
       onHorizontalDragEnd: _onDragEnd,
       child: AnimatedBuilder(
         animation: _animationController,
-        child: TapBarScreen(
-          toggle: toggle,
-        ),
+        child:
+            AnimatedSwitcher(duration: toggleDuration, child: myChild[index]),
         builder: (context, ch) {
           print(
               'animatedbuild $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
@@ -132,6 +146,10 @@ class _CustomDrawerState extends State<CustomDrawer>
 }
 
 class MainDrawer extends StatelessWidget {
+  final Function setIndex;
+
+  const MainDrawer({Key key, this.setIndex}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,14 +172,16 @@ class MainDrawer extends StatelessWidget {
           leading: Icon(Icons.restaurant, size: 30),
           title: Text('Categories', style: TextStyle(fontSize: 20)),
           onTap: () {
-            Navigator.of(context).pushReplacementNamed('/');
+            // Navigator.of(context).pushReplacementNamed('/');
+            setIndex(0);
           },
         ),
         ListTile(
           leading: Icon(Icons.settings, size: 30),
           title: Text('Filters', style: TextStyle(fontSize: 20)),
           onTap: () {
-            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+            // Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+            setIndex(1);
           },
         ),
       ]),
