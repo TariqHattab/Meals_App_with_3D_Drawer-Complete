@@ -26,14 +26,7 @@ class _CustomDrawerState extends State<CustomDrawer>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // Future.delayed(Duration.zero).then((value) {
-    //   width = MediaQuery.of(context).size.width;
-    // });
-    // maxSlide = (width * .625).roundToDouble();
-    // minDragStartEdge = (width * .167).roundToDouble();
-    // maxDragStartEdge = maxSlide - (width * .045).roundToDouble();
     print('init $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
     myDrawer = MainDrawer(setIndex: setIndex);
     myChild = [
@@ -109,7 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer>
     maxSlide = (width * .625).roundToDouble();
     minDragStartEdge = (width * .167).roundToDouble();
     maxDragStartEdge = maxSlide - (width * .045).roundToDouble();
-    print('build $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
+    //print('build $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
 
     return GestureDetector(
       onHorizontalDragStart: _onDragStart,
@@ -117,8 +110,8 @@ class _CustomDrawerState extends State<CustomDrawer>
       onHorizontalDragEnd: _onDragEnd,
       child: AnimatedBuilder(
         animation: _animationController,
-        child:
-            AnimatedSwitcher(duration: toggleDuration, child: myChild[index]),
+        child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 700), child: myChild[index]),
         builder: (context, ch) {
           print(
               'animatedbuild $width - $maxSlide - $minDragStartEdge - $maxDragStartEdge');
