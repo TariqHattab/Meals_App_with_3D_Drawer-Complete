@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Meals App 2',
         theme: ThemeData(
           primarySwatch: Colors.pink,
