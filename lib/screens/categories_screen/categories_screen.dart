@@ -20,7 +20,6 @@ class CategoriesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         itemBuilder: (ctx, index) {
           var category = DUMMY_CATEGORIES[index];
-          print(index);
           return CategoryItem(category: category);
         });
   }

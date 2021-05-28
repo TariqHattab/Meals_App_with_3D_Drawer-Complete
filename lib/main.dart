@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app_2/main_drawer.dart';
+
 import 'package:meals_app_2/providers/available_list.dart';
 import 'package:meals_app_2/providers/favorite_list.dart';
 import 'package:meals_app_2/screens/filters_screen/filters_screen.dart';
@@ -7,6 +7,8 @@ import 'package:meals_app_2/screens/meal_detail_screen/meal_detail_screen.dart';
 import 'package:meals_app_2/screens/meals_screen/meals_screen.dart';
 import 'package:meals_app_2/screens/tap_bar_screen/tap_bar_screen.dart';
 import 'package:provider/provider.dart';
+
+import 'custom_3d_drawer.dart';
 
 void main() {
   runApp(MyApp());

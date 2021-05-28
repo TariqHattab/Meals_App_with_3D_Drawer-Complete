@@ -8,14 +8,11 @@ class FavoriteList extends ChangeNotifier {
   }
 
   void addFavorite(Meal meal) {
-    print('add favorite');
     _favoritesList.add(meal);
     notifyListeners();
   }
 
   void removeFavorite(Meal meal) {
-    print(_favoritesList);
-    print('remove favorite');
     _favoritesList.remove(meal);
     notifyListeners();
   }

@@ -106,7 +106,6 @@ class _FABisFavoriteState extends State<FABisFavorite> {
   @override
   Widget build(BuildContext context) {
     isFavorite = Provider.of<FavoriteList>(context).isFavorite(widget.meal);
-    print('build floating $isFavorite');
     return FloatingActionButton(
       child: Icon(
         isFavorite ? Icons.favorite : Icons.favorite_outline,
@@ -121,7 +120,6 @@ class _FABisFavoriteState extends State<FABisFavorite> {
             Provider.of<FavoriteList>(context, listen: false)
                 .addFavorite(widget.meal);
           }
-          // widget.meal.isFavorite = !widget.meal.isFavorite;
         });
       },
     );

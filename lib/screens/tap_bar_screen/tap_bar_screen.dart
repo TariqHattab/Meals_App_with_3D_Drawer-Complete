@@ -40,7 +40,6 @@ class _TapBarScreenState extends State<TapBarScreen> {
           onPressed: widget.toggle,
         ),
       ),
-      // drawer: widget.toggle(),
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
@@ -59,8 +58,6 @@ class _TapBarScreenState extends State<TapBarScreen> {
         selectedItemColor: Theme.of(context).accentColor,
         onTap: _setIndex,
         type: BottomNavigationBarType.shifting,
-        //backgroundColor: Theme.of(context).accentColor,
-        //fixedColor: Theme.of(context).primaryColor,
       ),
     );
   }

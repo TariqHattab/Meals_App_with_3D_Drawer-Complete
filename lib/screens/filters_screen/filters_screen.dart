@@ -16,7 +16,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var filters;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     filters = Provider.of<AvailableList>(context, listen: false).filters;
   }
@@ -34,7 +33,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 Provider.of<AvailableList>(context, listen: false)
                     .setFilters(filters);
                 widget.setIndex(0, true);
-                // Navigator.of(context).pushReplacementNamed('/');
               })
         ],
       ),
@@ -56,11 +54,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return SwitchListTile(
       value: filters[condType],
       onChanged: (value) {
-        print(filters[condType]);
         setState(() {
           filters[condType] = value;
         });
-        print(filters[condType]);
       },
       title: Text(title),
     );
